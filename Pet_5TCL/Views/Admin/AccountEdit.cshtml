@@ -1,0 +1,80 @@
+﻿@model Pet_5TCL.Models.account
+
+@{
+    ViewBag.Title = "Chính sửa tài khoản";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+@using (Html.BeginForm())
+{<div class="main-content">
+        <form>
+            <div class="page-header no-gutters has-tab">
+                <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+                    <div class="media align-items-center m-b-15">
+                        <div class="m-l-15">
+                            <h4 class="m-b-0">@ViewBag.AccUser </h4>
+                            <p class="text-muted m-b-0">@ViewBag.AccID</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">Thông tin chi tiết</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content m-t-15">
+                <div class="tab-pane fade show active" id="product-edit-basic">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="username">Tên tài khoản</label>
+                                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                @Html.ValidationMessageFor(model => model.username, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Mật khẩu</label>
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Email</label>
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Số điện thoại</label>
+                                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Quyềm (0 là user, 1 là admin)</label>
+                                @Html.EditorFor(model => model.admin, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                                @Html.ValidationMessageFor(model => model.admin, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Trạng thái(0 là vô hiệu hoá, 1 là kích hoạt)</label>
+                                @Html.EditorFor(model => model.active, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                                @Html.ValidationMessageFor(model => model.active, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="username">Tên</label>
+                                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                @Html.ValidationMessageFor(model => model.name, "", new { @class = "error" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-b-15">
+                        <button class="btn btn-primary">
+                            <i class="anticon anticon-save"></i>
+                            <span>Lưu</span>
+                        </button>
+                        <button action="./" class="btn btn-default">
+                            <i class="anticon anticon-arrow-left"></i>
+                            <span>Quay lại</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}

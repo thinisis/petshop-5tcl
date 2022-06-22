@@ -1,0 +1,411 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"] - Shop thú cưng 5TCL</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/logo/logo-f.png">
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/app.min.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="~/Content/css/icofont.css">
+    <link rel="stylesheet" href="~/Content/css/meanmenu.min.css">
+    <link rel="stylesheet" href="~/Content/css/bundle.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <script src="~/Content/js/vendor/modernizr-3.11.7.min.js"></script>
+</head>
+<style>
+    .furits-header .menu-style-2 nav > ul > li > a {
+        color: #ffffff;
+    }
+
+    .furits-login li a {
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+
+    .full-height {
+        min-height: 75vh;
+    }
+    .btn {
+        font-size: .875rem;
+        padding: 0.65rem 1.25rem;
+        line-height: 1.25;
+        height: auto;
+        border-color: #edf2f9;
+    }
+    a:not([href]):not([tabindex]) {
+        color: white;
+        text-decoration: none;
+    }
+    </style>
+<body>
+    <header>
+        <div class="header-bottom wrapper-padding-2 res-header-sm sticker header-sticky-3 furits-header">
+            <div class="container-fluid">
+                <div class="header-bottom-wrapper">
+                    <div class="logo-2 ptb-35">
+                        <a href="~/">
+                            <img src="~/Content/img/logo/logo-f.png" alt="" width="100">
+                        </a>
+                    </div>
+                    <div class="menu-style-2 handicraft-menu menu-hover">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="~/">Trang chủ</a>
+                                </li>
+                                <li>
+                                    <a href="#">Phụ kiện</a>
+                                    <div class="category-menu-dropdown shop-menu">
+                                        <div class="category-dropdown-style category-common2 mb-30">
+                                            <h4 class="categories-subtitle">Phụ kiện, đồ dùng cho chó</h4>
+                                            <ul>
+                                                <li><a href="#">Thức ăn cho chó</a></li>
+                                                <li><a href="#">Vật dụng ăn uống cho chó</a></li>
+                                                <li><a href="#">Vòng cổ, dây dắt, rọ mõm</a></li>
+                                                <li><a href="#"> Quần áo cho chó</a></li>
+                                                <li><a href="#">Chuồng, giường, nhà, túi</a></li>
+                                                <li><a href="#">Đồ chơi, phụ kiện huấn luyện</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="category-dropdown-style category-common2 mb-30">
+                                            <h4 class="categories-subtitle">Phụ kiện, đồ dùng cho mèo</h4>
+                                            <ul>
+                                                <li><a href="#">Thức ăn cho mèo</a></li>
+                                                <li><a href="#">Cát vệ sinh cho mè</a></li>
+                                                <li><a href="#">Nhà cho mèo</a></li>
+                                                <li><a href="#">Thuốc thú y mèo</a></li>
+                                                <li><a href="#">Phụ kiện cho mèo</a></li>
+                                                <li><a href="#">Chăm sóc mèo</a></li>
+                                                <li><a href="#">Đồ dùng cho mèo</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="mega-banner-img">
+                                            <a href="single-product.html">
+                                                <img src="~/Content/img/banner/850x162.jpg" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                @if (Session["Admin"] != null)
+                                {
+                                    <li>
+                                        <a href="/Admin">Admin Panel</a>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="furits-login-cart">
+                        <div class="furits-login">
+                            <ul>
+                                @if (Session["LoginSession"] == null)
+                                {
+                                    <li>
+                                        <a href="/Account/Login">Đăng nhập</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Account/Reg">Đăng ký</a>
+                                    </li>
+                                }
+                                @if (Session["LoginSession"] != null)
+                                {
+                                    {
+                                        <li>
+                                            <a><b>Xin chào</b> @Session["LoginSession"].ToString()</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Account/Logout">Đăng xuất</a>
+                                        </li>
+                                    }
+                                }
+
+
+                            </ul>
+                        </div>
+                        <div class="header-cart-4 furits-cart">
+                            <a class="icon-cart" href="#">
+                                <i class="pe-7s-shopbag"></i>
+                                <span class="handicraft-count">02</span>
+                            </a>
+                            <ul class="cart-dropdown">
+                                <li class="single-product-cart">
+                                    <div class="cart-img">
+                                        <a href="#"><img src="~/Content/img/cart/1.jpg" alt=""></a>
+                                    </div>
+                                    <div class="cart-title">
+                                        <h5><a href="#"> Bits Headphone</a></h5>
+                                        <h6><a href="#">Black</a></h6>
+                                        <span>$80.00 x 1</span>
+                                    </div>
+                                    <div class="cart-delete">
+                                        <a href="#"><i class="ti-trash"></i></a>
+                                    </div>
+                                </li>
+                                <li class="single-product-cart">
+                                    <div class="cart-img">
+                                        <a href="#"><img src="~/Content/img/cart/2.jpg" alt=""></a>
+                                    </div>
+                                    <div class="cart-title">
+                                        <h5><a href="#"> Bits Headphone</a></h5>
+                                        <h6><a href="#">Black</a></h6>
+                                        <span>$80.00 x 1</span>
+                                    </div>
+                                    <div class="cart-delete">
+                                        <a href="#"><i class="ti-trash"></i></a>
+                                    </div>
+                                </li>
+                                <li class="single-product-cart">
+                                    <div class="cart-img">
+                                        <a href="#"><img src="~/Content/img/cart/3.jpg" alt=""></a>
+                                    </div>
+                                    <div class="cart-title">
+                                        <h5><a href="#"> Bits Headphone</a></h5>
+                                        <h6><a href="#">Black</a></h6>
+                                        <span>$80.00 x 1</span>
+                                    </div>
+                                    <div class="cart-delete">
+                                        <a href="#"><i class="ti-trash"></i></a>
+                                    </div>
+                                </li>
+                                <li class="cart-space">
+                                    <div class="cart-sub">
+                                        <h4>Subtotal</h4>
+                                    </div>
+                                    <div class="cart-price">
+                                        <h4>$240.00</h4>
+                                    </div>
+                                </li>
+                                <li class="cart-btn-wrapper">
+                                    <a class="cart-btn btn-hover" href="#">view cart</a>
+                                    <a class="cart-btn btn-hover" href="#">checkout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mobile-menu-area handicraft-menu d-md-block col-md-12 col-lg-12 col-12 d-lg-none d-xl-none">
+                        <div class="mobile-menu">
+                            <nav id="mobile-menu-active">
+                                <ul class="menu-overflow">
+                                    <li>
+                                        <a href="#">HOME</a>
+                                        <ul>
+                                            <li><a href="index.html">Fashion</a></li>
+                                            <li><a href="index-fashion-2.html">Fashion style 2</a></li>
+                                            <li><a href="index-fruits.html">Fruits</a></li>
+                                            <li><a href="index-book.html">book</a></li>
+                                            <li><a href="index-electronics.html">electronics</a></li>
+                                            <li><a href="index-electronics-2.html">electronics style 2</a></li>
+                                            <li><a href="index-food.html">food & drink</a></li>
+                                            <li><a href="index-furniture.html">furniture</a></li>
+                                            <li><a href="index-handicraft.html">handicraft</a></li>
+                                            <li><a href="index-smart-watch.html">smart watch</a></li>
+                                            <li><a href="index-sports.html">sports</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">pages</a>
+                                        <ul>
+                                            <li><a href="about-us.html">about us</a></li>
+                                            <li><a href="menu-list.html">menu list</a></li>
+                                            <li><a href="login.html">login</a></li>
+                                            <li><a href="register.html">register</a></li>
+                                            <li><a href="cart.html">cart page</a></li>
+                                            <li><a href="checkout.html">checkout</a></li>
+                                            <li><a href="wishlist.html">wishlist</a></li>
+                                            <li><a href="contact.html">contact</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">shop</a>
+                                        <ul>
+                                            <li><a href="shop-grid-2-col.html"> grid 2 column</a></li>
+                                            <li><a href="shop-grid-3-col.html"> grid 3 column</a></li>
+                                            <li><a href="shop.html">grid 4 column</a></li>
+                                            <li><a href="shop-grid-box.html">grid box style</a></li>
+                                            <li><a href="shop-list-1-col.html"> list 1 column</a></li>
+                                            <li><a href="shop-list-2-col.html">list 2 column</a></li>
+                                            <li><a href="shop-list-box.html">list box style</a></li>
+                                            <li><a href="product-details.html">tab style 1</a></li>
+                                            <li><a href="product-details-2.html">tab style 2</a></li>
+                                            <li><a href="product-details-3.html"> tab style 3</a></li>
+                                            <li><a href="product-details-4.html">sticky style</a></li>
+                                            <li><a href="product-details-5.html">sticky style 2</a></li>
+                                            <li><a href="product-details-6.html">gallery style</a></li>
+                                            <li><a href="product-details-7.html">gallery style 2</a></li>
+                                            <li><a href="product-details-8.html">fixed image style</a></li>
+                                            <li><a href="product-details-9.html">fixed image style 2</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">BLOG</a>
+                                        <ul>
+                                            <li><a href="blog.html">blog 3 colunm</a></li>
+                                            <li><a href="blog-2-col.html">blog 2 colunm</a></li>
+                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
+                                            <li><a href="blog-details.html">blog details</a></li>
+                                            <li><a href="blog-details-sidebar.html">blog details 2</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html"> Contact  </a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="breadcrumb-area pt-205 pb-210" style="background-image: url(/Content/img/bg/1903x500-regfix.jpg)">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2>Admin Panel</h2>
+                <ul>
+                    <li><a>Admin Panel</a></li>
+                    <li> @ViewData["ATitle"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Admin/Index">Tổng quan <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Admin/Post">Đăng mặt hàng</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Admin/AccountManager">Quản lý người dùng</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Admin/DonHang">Quản lý đơn hàng</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    @RenderBody()
+    <footer class="footer-area fruits-footer">
+        <div class="food-footer-bottom pt-80 pb-70 black-bg-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="footer-widget">
+                            <div class="food-about">
+                                <a href="#"><img src="~/Content/img/logo/logo-f.png" alt="" width="150"></a>
+                                <p>Pet Shop Mai~ Djnk?</p>
+                                <div class="food-about-info">
+                                    <p>Ở đây chúng tôi có thức ăn, phụ kiện cho chó mèo</p>
+                                    <div class="food-info-wrapper">
+                                        <div class="food-address">
+                                            <div class="food-info-icon">
+                                                <i class="pe-7s-map-marker"></i>
+                                            </div>
+                                            <div class="food-info-content">
+                                                <p>Thành phố Hồ Chí Minh</p>
+                                            </div>
+                                        </div>
+                                        <div class="food-address">
+                                            <div class="food-info-icon">
+                                                <i class="pe-7s-call"></i>
+                                            </div>
+                                            <div class="food-info-content">
+                                                <p>+84 899 999 999</p>
+                                            </div>
+                                        </div>
+                                        <div class="food-address">
+                                            <div class="food-info-icon">
+                                                <i class="pe-7s-chat"></i>
+                                            </div>
+                                            <div class="food-info-content">
+                                                <p><a href="#">admin@thinnguyen.dev</a> <br><a href="#">admin@thinnguyen.dev</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="footer-widget mt-50">
+                            <h3 class="footer-widget-title-6">Liên kết nhanh</h3>
+                            <div class="food-widget-content">
+                                <ul>
+                                    <li><a href="contact.html"><img src="~/Content/img/icon-img/41.png" alt=""> Giỏ hàng</a></li>
+                                    <li><a href="register.html"><img src="~/Content/img/icon-img/41.png" alt=""> Quản lý tài khoản</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="footer-widget mt-50">
+                            <h3 class="footer-widget-title-6">Thông tin</h3>
+                            <div class="food-widget-content">
+                                <ul>
+                                    <li><a href="about-us.html"><img src="~/Content/img/icon-img/41.png" alt=""> Về chúng tôi</a></li>
+                                    <li><a href="contact.html"><img src="~/Content/img/icon-img/41.png" alt="">Liên hệ</a></li>
+                                    <li><a href="#"><img src="~/Content/img/icon-img/41.png" alt="">Điều khoản - Chính sách</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="footer-widget food-widget mt-50">
+                            <a href="//www.dmca.com/Protection/Status.aspx?ID=f4cd9185-6b82-41c8-ad9f-85533e3b3cba" title="DMCA.com Protection Status" class="dmca-badge"> <img src="https://images.dmca.com/Badges/DMCA_badge_grn_60w.png?ID=f4cd9185-6b82-41c8-ad9f-85533e3b3cba" alt="DMCA.com Protection Status" /></a>
+                            <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="food-copyright black-bg-6 ptb-30">
+            <div class="container text-center">
+                <p>Copyright © <a href="#"> 5TCL Pet</a> 2022 . All Right Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+    <!-- all js here -->
+    <script src="~/Content/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/js/popper.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/isotope.pkgd.min.js"></script>
+    <script src="~/Content/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Content/js/jquery.counterup.min.js"></script>
+    <script src="~/Content/js/waypoints.min.js"></script>
+    <script src="~/Content/js/ajax-mail.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/plugins.js"></script>
+    <script src="~/Content/js/main.js"></script>
+    @RenderSection("Script", required: false)
+</body>
+</html>

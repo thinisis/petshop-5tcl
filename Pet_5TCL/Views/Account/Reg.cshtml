@@ -1,0 +1,109 @@
+﻿@model Pet_5TCL.Models.account
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Dieu chinh text color navbarheader-->
+<div class="breadcrumb-area pt-205 pb-210" style="background-image: url(../Content/img/bg/1903x500-regfix.jpg)">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <h2>Đăng ký</h2>
+            <ul>
+                <li><a>Tài khoản</a></li>
+                <li> Đăng ký </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- register-area start -->
+<div class="login">
+    <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex" style="background-image: url('../Content/img/others/login-3.png')">
+        <div class="d-flex flex-column justify-content-between w-100">
+            <div class="container d-flex h-100">
+                <div class="row align-items-center w-100">
+                    <div class="col-md-7 col-lg-5 m-h-auto">
+                        <div class="d-flex flex-column justify-content-between w-100">
+                            <form action="Reg" method="post">
+                                @if (ViewBag.msgFail != null)
+                                {
+                                    <div id="msgAlert" class="alert alert-danger" role="alert">
+                                        Lỗi! - @ViewBag.msgFail
+                                    </div>
+                                }
+                                @if (ViewBag.msgSuccess != null)
+                                {
+                                    <div id="msgAlert" class="alert alert-success" role="alert">
+                                        Thành công! - @ViewBag.msgSuccess
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label class="font-weight-semibold" for="username">Tài khoản:</label>
+                                    <div class="input-affix">
+                                        <i class="prefix-icon anticon anticon-user"></i>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Tên tài khoản" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-semibold" for="password">Mật khẩu:</label>
+                                    <div class="input-affix m-b-10">
+                                        <i class="prefix-icon anticon anticon-lock"></i>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Nhập vào mật khẩu" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-semibold" for="repassword">Nhập lại mật khẩu:</label>
+                                    <div class="input-affix m-b-10">
+                                        <i class="prefix-icon anticon anticon-lock"></i>
+                                        <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Nhập vào mật khẩu" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-semibold" for="email">Email:</label>
+                                    <div class="input-affix">
+                                        <i class="prefix-icon anticon anticon-mail"></i>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-semibold" for="phone">Số điện thoại:</label>
+                                    <div class="input-affix">
+                                        <i class="prefix-icon anticon anticon-phone"></i>
+                                        <input type="number" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-semibold" for="name">Họ và tên:</label>
+                                    <div class="input-affix">
+                                        <i class="prefix-icon anticon anticon-message"></i>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Họ và tên" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span class="font-size-13 text-muted">
+                                            Đã có tài khoản?
+                                            <a class="small" href="/Account/Login"> Đăng nhập</a>
+                                        </span>
+                                        <div class="button-box">
+                                            <button method="post" type="submit" value="Reg" class="btn btn-primary">Đăng ký</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- register-area end -->
+<!--Script an msg-->
+@section Script{
+    <script>
+        setTimeout(function () {
+            $('#msgAlert').fadeOut('slow');
+        },2000)
+    </script>
+    }
