@@ -8,10 +8,9 @@ namespace Pet_5TCL.Models
 
     public partial class orders_item
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
-        [Key]
+        [Required]
         [StringLength(256)]
         public string madon { get; set; }
 

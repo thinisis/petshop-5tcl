@@ -1,0 +1,104 @@
+﻿@model Pet_5TCL.Models.product
+
+@{
+    ViewBag.Title = "Chỉnh sửa sản phẩm";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+
+@using (Html.BeginForm("ProductEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="main-content"> 
+        <form>
+            <div class="page-header no-gutters has-tab">
+                <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+                    <div class="media align-items-center m-b-15">
+                        <div class="m-l-15">
+                            <h4 class="m-b-0">@ViewBag.ProductID </h4>
+                            <p class="text-muted m-b-0">@ViewBag.ProductName</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">Thông tin chi tiết</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content m-t-15">
+                <div class="tab-pane fade show active" id="product-edit-basic">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="username">Tên sản phẩm</label>
+                                <input class="form-control" type="text" id="tensp" name="tensp" required value="@Html.ValueFor(model => model.tensp)" />
+                                @Html.ValidationMessageFor(model => model.tensp, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="masp">Mã sản phẩm</label>
+                                <input class="form-control" type="text" id="masp" name="masp" required readonly="readonly" value="@Html.ValueFor(model => model.masp)" />
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="maloai">Loại sản phẩm</label>
+                                @Html.DropDownListFor(model => model.products_type.maloai, ViewBag.ListPrDType as SelectList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.products_type.maloai, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Số lượng</label>
+                                <input class="form-control" type="number" id="soluong" name="soluong" required value="@Html.ValueFor(model => model.soluong)" />
+                                @Html.ValidationMessageFor(model => model.soluong, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Ngày cập nhật</label>
+                                <input class="form-control" type="datetime" id="ngaycapnhat" name="ngaycapnhat" required value="@Html.ValueFor(model => model.ngaycapnhat)" />
+                                @Html.ValidationMessageFor(model => model.ngaycapnhat, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Đơn giá</label>
+                                <input class="form-control" type="number" id="dongia" name="dongia" required value="@Html.ValueFor(model => model.dongia)" />
+                                @Html.ValidationMessageFor(model => model.dongia, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="productPrice">Mô tả</label>
+                                <input class="form-control" type="text" id="mota" name="mota" required value="@Html.ValueFor(model => model.mota)" />
+                                @Html.ValidationMessageFor(model => model.mota, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="username">Trạng thái(0 là vô hiệu hoá, 1 là kích hoạt)</label>
+                                <input class="form-control" type="number" id="active" name="active" required value="@Html.ValueFor(model => model.active)" />
+                                @Html.ValidationMessageFor(model => model.active, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="username">Trạng thái sale(0 là vô hiệu hoá, 1 là kích hoạt)</label>
+                                <input class="form-control" type="number" id="saleactive" name="saleactive" required value="@Html.ValueFor(model => model.saleactive)" />
+                                @Html.ValidationMessageFor(model => model.saleactive, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="username">Mức sale</label>
+                                <input class="form-control" type="number" id="sale" name="sale" required value="@Html.ValueFor(model => model.sale)" />
+                                @Html.ValidationMessageFor(model => model.sale, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold" for="image">Hình ảnh</label>
+                                <img src="/@Html.ValueFor(model => model.image)" height="200" width="150" />
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-semibold">Hình ảnh</label>
+                                <input type=file name="uploadFile" id="uploadFile" accept="image/*"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-b-15">
+                        <button class="btn btn-primary">
+                            <i class="anticon anticon-save"></i>
+                            <span>Lưu</span>
+                        </button>
+                        <button action="./" class="btn btn-default">
+                            <i class="anticon anticon-arrow-left"></i>
+                            <span>Quay lại</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    }

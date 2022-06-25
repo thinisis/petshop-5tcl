@@ -51,5 +51,13 @@ namespace Pet_5TCL.Models
         public virtual ICollection<orders_item> orders_item { get; set; }
 
         public virtual products_type products_type { get; set; }
+        public decimal salemoney()
+        {
+            if (saleactive == 1)
+                return dongia - (dongia * (decimal)(sale * 0.001));
+            else
+                return dongia;
+        }
+
     }
 }

@@ -1,0 +1,185 @@
+﻿@model PagedList.IPagedList<Pet_5TCL.Models.product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: url(/Content/img/bg/1903x500-regfix.jpg)">
+    <div class="container-fluid">
+        <div class="breadcrumb-content text-center">
+            <h2>Shop</h2>
+            <ul>
+                <li><a href="#">Shop</a></li>
+                <li>Danh sách mặt hàng</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="shop-page-wrapper shop-page-padding ptb-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop-sidebar mr-50">
+                    <div class="sidebar-widget mb-50">
+                        <h3 class="sidebar-title">Tìm sản phẩm</h3>
+                        <div class="sidebar-search">
+                            <form action="#">
+                                <input placeholder="Tìm kiếm..." type="text">
+                                <button><i class="ti-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mb-45">
+                        <h3 class="sidebar-title">Theo losản phẩm</h3>
+                        <div class="sidebar-categories">
+                            <ul>
+                                <li><a href="#">Accessories <span>4</span></a></li>
+                                <li><a href="#">Book <span>9</span></a></li>
+                                <li><a href="#">Clothing <span>5</span> </a></li>
+                                <li><a href="#">Homelife <span>3</span></a></li>
+                                <li><a href="#">Kids & Baby <span>4</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mb-40">
+                        <h3 class="sidebar-title">tag</h3>
+                        <div class="product-tags">
+                            <ul>
+                                <li><a href="#">Clothing</a></li>
+                                <li><a href="#">Bag</a></li>
+                                <li><a href="#">Women</a></li>
+                                <li><a href="#">Tie</a></li>
+                                <li><a href="#">Women</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop-product-wrapper res-xl res-xl-btn">
+                    <div class="shop-bar-area">
+                        <div class="shop-bar pb-60">
+                            <div class="shop-found-selector">
+                                <div class="shop-found">
+                                    <p>Có tất cả  <span>@ViewBag.ProductNumber</span> sản phẩm</p>
+                                </div>
+                                <div class="shop-selector">
+                                    <label>Sort By : </label>
+                                    <select name="select">
+                                        <option value="">Default</option>
+                                        <option value="">A to Z</option>
+                                        <option value=""> Z to A</option>
+                                        <option value="">In stock</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="shop-filter-tab">
+                                <div class="shop-tab nav" role=tablist>
+                                    <a class="active" href="#grid-sidebar1" data-toggle="tab" role="tab" aria-selected="false">
+                                        <i class="ti-layout-grid4-alt"></i>
+                                    </a>
+                                    <a href="#grid-sidebar2" data-toggle="tab" role="tab" aria-selected="true">
+                                        <i class="ti-menu"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shop-product-content tab-content">
+                            <div id="grid-sidebar1" class="tab-pane fade active show">
+                                <div class="row">
+                                    @foreach (var item in Model)
+                                    {
+                                        if(item.active == 1)
+                                        {
+                                            <div class="col-lg-6 col-md-6 col-xl-3">
+                                                <div class="product-wrapper mb-30">
+                                                    <div class="product-img">
+                                                        <a href="#">
+                                                            <img src="/@item.image" alt="">
+                                                        </a>
+                                                        @if(item.saleactive == 1)
+                                                        {
+                                                            <span>-@item.sale%</span>
+                                                        }
+                                                        <div class="product-action">
+                                                            <a class="animate-top" title="Thêm vào giỏ hàng" href="@Url.Action("AddItem", "Cart",new { @id = item.masp, @strURL = Request.Url.ToString() })">
+                                                                <i class="pe-7s-cart"></i>
+                                                            </a>
+                                                            <a class="animate-right" title="Chi tiết" data-toggle="modal" data-target="#@item.masp" href="#">
+                                                                <i class="pe-7s-look"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <h4><a href="#">@item.tensp </a></h4>
+                                                        <span>@string.Format("{0:N2}", item.dongia) VNĐ</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination-style mt-30 text-center">
+                    <ul>
+                        @Html.PagedListPager(Model, page => Url.Action("Shop", new
+                        {
+                            page = page
+                        }))
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="@item.masp" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="pe-7s-close" aria-hidden="true"></span>
+        </button>
+        <div class="modal-dialog modal-quickview-width" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="qwick-view-left">
+                        <div class="quick-view-learg-img">
+                            <div class="quick-view-tab-content tab-content">
+                                <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                                    <img src="/@item.image" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quick-view-list nav" role="tablist">
+                            <a class="active" href="#modal1" data-toggle="tab" role="tab">
+                                <img src="/@item.image" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="qwick-view-right">
+                        <div class="qwick-view-content">
+                            <h3>@item.tensp</h3>
+                            <div class="price">
+                                <span class="new">@item.salemoney()</span>
+                                <span class="old">@item.dongia  </span>
+                            </div>
+                            <p>@item.mota</p>
+                            <div class="quickview-plus-minus">
+                                <div class="cart-plus-minus">
+                                    <input type="text" value="1" name="qtybutton" class="cart-plus-minus-box">
+                                </div>
+                                <div class="quickview-btn-cart">
+                                    <a class="btn-hover-black" href="@Url.Action("AddItem", "Order",new { @id = item.masp, @strURL = Request.Url.ToString() })">Thêm vào giỏ hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+}

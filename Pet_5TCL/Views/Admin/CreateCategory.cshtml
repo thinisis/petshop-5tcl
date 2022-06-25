@@ -1,0 +1,55 @@
+﻿@model Pet_5TCL.Models.products_type
+
+@{
+    ViewBag.Title = "CreateCategory";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+@using (Html.BeginForm()) 
+{
+   <div class="main-content">
+       <form>
+           <div class="page-header no-gutters has-tab">
+               <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+                   <div class="media align-items-center m-b-15">
+                       <div class="m-l-15">
+                           <h4 class="m-b-0">Thêm loại hàng</h4>
+                       </div>
+                   </div>
+               </div>
+               <ul class="nav nav-tabs">
+                   <li class="nav-item">
+                       <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">Thông tin chi tiết</a>
+                   </li>
+               </ul>
+           </div>
+           <div class="tab-content m-t-15">
+               <div class="tab-pane fade show active" id="product-edit-basic">
+                   <div class="card">
+                       <div class="card-body">
+                           <div class="form-group">
+                               <label class="font-weight-semibold" for="username">Mã loại</label>
+                               <input class="form-control" type="text" id="maloai" name="maloai" required value="@Html.ValueFor(model => model.maloai)" />
+                               @Html.ValidationMessageFor(model => model.maloai, "", new { @class = "error" })
+                           </div>
+                           <div class="form-group">
+                               <label class="font-weight-semibold" for="username">Tên loại</label>
+                               <input class="form-control" type="text" id="tensp" name="tensp" required value="@Html.ValueFor(model => model.tenloai)" />
+                               @Html.ValidationMessageFor(model => model.tenloai, "", new { @class = "error" })
+                           </div>
+                       </div>
+                   </div>
+                   <div class="m-b-15">
+                       <button class="btn btn-primary">
+                           <i class="anticon anticon-save"></i>
+                           <span>Lưu</span>
+                       </button>
+                       <button action="./" class="btn btn-default">
+                           <i class="anticon anticon-arrow-left"></i>
+                           <span>Quay lại</span>
+                       </button>
+                   </div>
+               </div>
+           </div>
+       </form>
+   </div>
+}

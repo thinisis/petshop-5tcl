@@ -66,7 +66,7 @@
         autoplayTimeout: 5000,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
-        navText: ['<img src="Content/img/icon-img/57.png"> next', 'prev <img src="Content/img/icon-img/58.png">'],
+        navText: ['<img src="/Content/img/icon-img/57.png"> ti?p theo', 'tr??c ?ó <img src="/Content/img/icon-img/58.png">'],
         item: 1,
         responsive: {
             0: {

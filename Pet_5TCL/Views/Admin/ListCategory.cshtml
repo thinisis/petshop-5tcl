@@ -1,0 +1,110 @@
+﻿@model PagedList.IPagedList<Pet_5TCL.Models.products_type>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Danh sách loại hàng";
+    Layout = "~/Views/Shared/_ALayout.cshtml";
+}
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+<!-- Content Wrapper START -->
+<div class="page-container">
+    <div class="main-content">
+        <div class="card">
+            <div class="card-body">
+                <div class="row m-b-30">
+                    <div class="col-lg-4 text-right">
+                        <a href="@Url.Action("NewProduct", "Admin")" class="btn btn-primary">
+                            <i class="anticon anticon-plus-circle m-r-5"></i>
+                            <span>Thêm sản phẩm</span>
+                        </a>
+                        <a href="@Url.Action("NewCategory", "Admin")" class="btn btn-primary">
+                            <i class="anticon anticon-plus-circle m-r-5"></i>
+                            <span>Thêm loại sản phẩm</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
+                    @Model.PageCount
+                </div>
+                <div class="pagination mt-30 text-center">
+                    @Html.PagedListPager(Model, page => Url.Action("ListCategory", new
+                    {
+                        page = page
+                    }))
+                </div>
+                @if (ViewBag.msgFail != null)
+                {
+                    <div id="msgAlert" class="alert alert-danger" role="alert">
+                        Lỗi! - @ViewBag.msgFail
+                    </div>
+                }
+                @if (ViewBag.msgSuccess != null)
+                {
+                    <div id="msgAlert" class="alert alert-success" role="alert">
+                        Thành công! - @ViewBag.msgSuccess
+                    </div>
+                }
+                <div class="table-responsive">
+                    <table class="table table-hover e-commerce-table">
+                        <thead>
+                            <tr>
+                                <th>Mã loại</th>
+                                <th>Tên loại</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @item.maloai
+                                    </td>
+                                   
+                                    <td>@item.tenloai</td>
+                                    <td class="text-right">
+                                        <a href="@Url.Action("CategoryEdit", "Admin",new { @id = item.maloai })" class="btn btn-icon btn-hover btn-sm btn-rounded pull-right">
+                                            <i class="anticon anticon-edit"></i>
+                                        </a>
+                                        <a onclick="return confirm('Bạn có chắc chắn muốn xoá? Xoá loại hàng sẽ xoá toàn bộ hàng cũng loại?')" href="@Url.Action("CategoryDetele", "Admin",new { @id = item.maloai })" class="btn btn-icon btn-hover btn-sm btn-rounded">
+                                            <i class="anticon anticon-delete"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

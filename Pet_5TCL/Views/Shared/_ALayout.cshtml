@@ -134,65 +134,38 @@
 
                             </ul>
                         </div>
-                        <div class="header-cart-4 furits-cart">
-                            <a class="icon-cart" href="#">
-                                <i class="pe-7s-shopbag"></i>
-                                <span class="handicraft-count">02</span>
-                            </a>
-                            <ul class="cart-dropdown">
-                                <li class="single-product-cart">
-                                    <div class="cart-img">
-                                        <a href="#"><img src="~/Content/img/cart/1.jpg" alt=""></a>
-                                    </div>
-                                    <div class="cart-title">
-                                        <h5><a href="#"> Bits Headphone</a></h5>
-                                        <h6><a href="#">Black</a></h6>
-                                        <span>$80.00 x 1</span>
-                                    </div>
-                                    <div class="cart-delete">
-                                        <a href="#"><i class="ti-trash"></i></a>
-                                    </div>
-                                </li>
-                                <li class="single-product-cart">
-                                    <div class="cart-img">
-                                        <a href="#"><img src="~/Content/img/cart/2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="cart-title">
-                                        <h5><a href="#"> Bits Headphone</a></h5>
-                                        <h6><a href="#">Black</a></h6>
-                                        <span>$80.00 x 1</span>
-                                    </div>
-                                    <div class="cart-delete">
-                                        <a href="#"><i class="ti-trash"></i></a>
-                                    </div>
-                                </li>
-                                <li class="single-product-cart">
-                                    <div class="cart-img">
-                                        <a href="#"><img src="~/Content/img/cart/3.jpg" alt=""></a>
-                                    </div>
-                                    <div class="cart-title">
-                                        <h5><a href="#"> Bits Headphone</a></h5>
-                                        <h6><a href="#">Black</a></h6>
-                                        <span>$80.00 x 1</span>
-                                    </div>
-                                    <div class="cart-delete">
-                                        <a href="#"><i class="ti-trash"></i></a>
-                                    </div>
-                                </li>
-                                <li class="cart-space">
-                                    <div class="cart-sub">
-                                        <h4>Subtotal</h4>
-                                    </div>
-                                    <div class="cart-price">
-                                        <h4>$240.00</h4>
-                                    </div>
-                                </li>
-                                <li class="cart-btn-wrapper">
-                                    <a class="cart-btn btn-hover" href="#">view cart</a>
-                                    <a class="cart-btn btn-hover" href="#">checkout</a>
-                                </li>
-                            </ul>
-                        </div>
+                        @if (Session["LoginSession"] != null && Session["Cart"] != null)
+                        {
+                            <div class="header-cart-4 furits-cart">
+                                <a class="icon-cart" href="#">
+                                    <i class="pe-7s-shopbag"></i>
+                                    <span class="handicraft-count">@Session["TongSanPham"].ToString()</span>
+                                </a>
+                                <ul class="cart-dropdown">
+
+                                    @foreach (var item in Session["Cart"] as IEnumerable<Pet_5TCL.Models.Cart>)
+                                    {
+                                        <li class="single-product-cart">
+                                            <div class="cart-img">
+                                                <a href="#"><img src="/@item.image" alt=""></a>
+                                            </div>
+                                            <div class="cart-title">
+                                                <h5><a href="@Url.Action("Details", "Home",new { @id = item.masp })"> @item.tensp</a></h5>
+                                                <span>@String.Format("{0:0,0}", item.dThanhtien) VND</span>
+                                            </div>
+                                            <div class="cart-delete">
+                                                <a href="#"><i class="ti-trash"></i></a>
+                                            </div>
+                                        </li>
+                                    }
+
+                                    <li class="cart-btn-wrapper">
+                                        <a class="cart-btn btn-hover" href="#">Xem giỏ hàng</a>
+                                        <a class="cart-btn btn-hover" href="#">Thanh toán</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div class="row">
@@ -201,66 +174,32 @@
                             <nav id="mobile-menu-active">
                                 <ul class="menu-overflow">
                                     <li>
-                                        <a href="#">HOME</a>
+                                        <a href="/Index">Trang chủ</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Phụ kiện, đồ dùng cho chó</a>
                                         <ul>
-                                            <li><a href="index.html">Fashion</a></li>
-                                            <li><a href="index-fashion-2.html">Fashion style 2</a></li>
-                                            <li><a href="index-fruits.html">Fruits</a></li>
-                                            <li><a href="index-book.html">book</a></li>
-                                            <li><a href="index-electronics.html">electronics</a></li>
-                                            <li><a href="index-electronics-2.html">electronics style 2</a></li>
-                                            <li><a href="index-food.html">food & drink</a></li>
-                                            <li><a href="index-furniture.html">furniture</a></li>
-                                            <li><a href="index-handicraft.html">handicraft</a></li>
-                                            <li><a href="index-smart-watch.html">smart watch</a></li>
-                                            <li><a href="index-sports.html">sports</a></li>
+                                            <li><a href="#">Thức ăn cho chó</a></li>
+                                            <li><a href="#">Vật dụng ăn uống cho chó</a></li>
+                                            <li><a href="#">Vòng cổ, dây dắt, rọ mõm</a></li>
+                                            <li><a href="#"> Quần áo cho chó</a></li>
+                                            <li><a href="#">Chuồng, giường, nhà, túi</a></li>
+                                            <li><a href="#">Đồ chơi, phụ kiện huấn luyện</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">pages</a>
+                                        <a href="#">Phụ kiện, đồ dùng cho mèo</a>
                                         <ul>
-                                            <li><a href="about-us.html">about us</a></li>
-                                            <li><a href="menu-list.html">menu list</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="register.html">register</a></li>
-                                            <li><a href="cart.html">cart page</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="wishlist.html">wishlist</a></li>
-                                            <li><a href="contact.html">contact</a></li>
+                                            <li><a href="#">Thức ăn cho mèo</a></li>
+                                            <li><a href="#">Cát vệ sinh cho mè</a></li>
+                                            <li><a href="#">Nhà cho mèo</a></li>
+                                            <li><a href="#">Thuốc thú y mèo</a></li>
+                                            <li><a href="#">Phụ kiện cho mèo</a></li>
+                                            <li><a href="#">Chăm sóc mèo</a></li>
+                                            <li><a href="#">Đồ dùng cho mèo</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="#">shop</a>
-                                        <ul>
-                                            <li><a href="shop-grid-2-col.html"> grid 2 column</a></li>
-                                            <li><a href="shop-grid-3-col.html"> grid 3 column</a></li>
-                                            <li><a href="shop.html">grid 4 column</a></li>
-                                            <li><a href="shop-grid-box.html">grid box style</a></li>
-                                            <li><a href="shop-list-1-col.html"> list 1 column</a></li>
-                                            <li><a href="shop-list-2-col.html">list 2 column</a></li>
-                                            <li><a href="shop-list-box.html">list box style</a></li>
-                                            <li><a href="product-details.html">tab style 1</a></li>
-                                            <li><a href="product-details-2.html">tab style 2</a></li>
-                                            <li><a href="product-details-3.html"> tab style 3</a></li>
-                                            <li><a href="product-details-4.html">sticky style</a></li>
-                                            <li><a href="product-details-5.html">sticky style 2</a></li>
-                                            <li><a href="product-details-6.html">gallery style</a></li>
-                                            <li><a href="product-details-7.html">gallery style 2</a></li>
-                                            <li><a href="product-details-8.html">fixed image style</a></li>
-                                            <li><a href="product-details-9.html">fixed image style 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">BLOG</a>
-                                        <ul>
-                                            <li><a href="blog.html">blog 3 colunm</a></li>
-                                            <li><a href="blog-2-col.html">blog 2 colunm</a></li>
-                                            <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                            <li><a href="blog-details-sidebar.html">blog details 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html"> Contact  </a></li>
+
                                 </ul>
                             </nav>
                         </div>
@@ -292,13 +231,16 @@
                     <a class="nav-link" href="/Admin/Index">Tổng quan <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Admin/Post">Đăng mặt hàng</a>
+                    <a class="nav-link" href="/Admin/ListProduct">Quản lý sản phẩm</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Admin/ListCategory">Quản lý loại sản phẩm</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/Admin/AccountManager">Quản lý người dùng</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Admin/DonHang">Quản lý đơn hàng</a>
+                    <a class="nav-link" href="/Admin/ListOrder">Quản lý đơn hàng</a>
                 </li>
             </ul>
         </div>
@@ -387,13 +329,26 @@
 
 
 
+    @section Script{
+        <script>
+            setTimeout(function () {
+                $('#msgAlert').fadeOut('slow');
+            }, 2000)
+        </script>
+    }
 
 
+    <!-- Core Vendors JS -->
+    <script src="~/Content/table/vendors.min.js"></script>
 
+    <!-- page js -->
+    <script src="~/Content/table/jquery.dataTables.min.js"></script>
+    <script src="~/Content/table/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/table/e-commerce-order-list.js"></script>
 
+    <!-- Core JS -->
+    <script src="~/Content/table/app.min.js"></script>
 
-
-    <!-- all js here -->
     <script src="~/Content/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="~/Content/js/popper.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>

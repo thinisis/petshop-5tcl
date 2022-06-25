@@ -43,8 +43,6 @@ namespace Pet_5TCL.Models
         [StringLength(256)]
         public string name { get; set; }
 
-        public virtual address address { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }
     }

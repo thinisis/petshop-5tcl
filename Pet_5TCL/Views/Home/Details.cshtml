@@ -1,0 +1,77 @@
+﻿@model Pet_5TCL.Models.product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="breadcrumb-area pt-205 pb-210" style="background-image: url(/Content/img/bg/1903x500-regfix.jpg)">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2>Sản phẩm</h2>
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li> @Html.ValueFor(model => model.tensp) </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="product-details ptb-100 pb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-7 col-12">
+                    <div class="product-details-5 pr-70">
+                        <img src="/@Html.ValueFor(model => model.image)" alt="">
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-5 col-12">
+                    <div class="sidebar-active product-details-content">
+                        <h3>@Html.ValueFor(model => model.tensp)</h3>
+                        <div class="rating-number">
+                            <li><a href="#">Mã sản phẩm: @Html.ValueFor(model => model.masp)</a></li>
+                        </div>
+                        <div class="details-price">
+                            <span>@string.Format("{0:N2}", @Html.ValueFor(model => model.dongia)) VNĐ</span>
+                        </div>
+                        <p>@Html.ValueFor(model => model.mota)</p>
+                        <div class="quickview-plus-minus">
+                            <div class="cart-plus-minus">
+                                <input type="text" value="1" name="qtybutton" class="cart-plus-minus-box">
+                            </div>
+                            <div class="quickview-btn-cart">
+                                <a class="btn-hover-black" href="#">Thêm vào giỏ hàng</a>
+                            </div>
+                        </div>
+                        <div class="product-details-cati-tag mt-35">
+                            <ul>
+                                <li class="categories-title">Loại sản phẩm :</li>
+                                <li><a href="#">@Html.ValueFor(model => model.products_type.tenloai)</a></li>
+                            </ul>
+                        </div>
+                        <div class="product-details-cati-tag mtb-10">
+                            <ul>
+                                <li class="categories-title">Tags :</li>
+                                <li><a href="#">@Html.ValueFor(model => model.products_type.tenloai)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-description-review-area pb-90">
+        <div class="container">
+            <div class="product-description-review text-center">
+                <div class="description-review-title nav" role=tablist>
+                    <a class="active" href="#pro-dec" data-toggle="tab" role="tab" aria-selected="true">
+                        Mô tả
+                    </a>
+                </div>
+                <div class="description-review-text tab-content">
+                    <div class="tab-pane active show fade" id="pro-dec" role="tabpanel">
+                        <p>@Html.ValueFor(model => model.mota)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  

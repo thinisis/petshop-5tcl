@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Pet_5TCL",
+    "\\Pet_5TCL\\Controllers",
+    "\\Pet_5TCL\\Views",
+    "\\Pet_5TCL\\Views\\Account",
+    "\\Pet_5TCL\\Views\\Admin",
+    "\\Pet_5TCL\\Views\\Home",
+    "\\Pet_5TCL\\Views\\Shared"
   ],
-  "SelectedNode": "\\C:\\Users\\thinn\\Source\\Repos\\thinisis\\petshop-5tcl",
+  "SelectedNode": "\\Pet_5TCL\\Controllers\\AccountController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -130,17 +136,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\account.cs" />
-    <Compile Include="Models\address.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\order.cs" />
     <Compile Include="Models\orders_item.cs" />
     <Compile Include="Models\product.cs" />
     <Compile Include="Models\products_type.cs" />
+    <Compile Include="Models\product_img.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,6 +201,7 @@
     <Content Include="Content\img\banner\17.jpg" />
     <Content Include="Content\img\banner\18.jpg" />
     <Content Include="Content\img\banner\19.jpg" />
+    <Content Include="Content\img\banner\1920x1080.jpg" />
     <Content Include="Content\img\banner\2.jpg" />
     <Content Include="Content\img\banner\2.png" />
     <Content Include="Content\img\banner\20.jpg" />
@@ -564,6 +574,7 @@
     <Content Include="Content\img\product\food\8.jpg" />
     <Content Include="Content\img\product\food\9.jpg" />
     <Content Include="Content\img\product\furits\1.jpg" />
+    <Content Include="Content\img\product\furits\1.png" />
     <Content Include="Content\img\product\furits\10.jpg" />
     <Content Include="Content\img\product\furits\11.jpg" />
     <Content Include="Content\img\product\furits\12.jpg" />
@@ -575,13 +586,18 @@
     <Content Include="Content\img\product\furits\18.jpg" />
     <Content Include="Content\img\product\furits\19.jpg" />
     <Content Include="Content\img\product\furits\2.jpg" />
+    <Content Include="Content\img\product\furits\2.png" />
     <Content Include="Content\img\product\furits\20.jpg" />
     <Content Include="Content\img\product\furits\21.jpg" />
     <Content Include="Content\img\product\furits\22.jpg" />
     <Content Include="Content\img\product\furits\3.jpg" />
+    <Content Include="Content\img\product\furits\3.png" />
     <Content Include="Content\img\product\furits\4.jpg" />
+    <Content Include="Content\img\product\furits\4.png" />
     <Content Include="Content\img\product\furits\5.jpg" />
+    <Content Include="Content\img\product\furits\5.png" />
     <Content Include="Content\img\product\furits\6.jpg" />
+    <Content Include="Content\img\product\furits\7.jpg" />
     <Content Include="Content\img\product\furits\8.jpg" />
     <Content Include="Content\img\product\furits\9.jpg" />
     <Content Include="Content\img\product\furniture\1.jpg" />
@@ -654,6 +670,7 @@
     <Content Include="Content\img\slider\14.png" />
     <Content Include="Content\img\slider\15.jpg" />
     <Content Include="Content\img\slider\16.jpg" />
+    <Content Include="Content\img\slider\16.png" />
     <Content Include="Content\img\slider\17.jpg" />
     <Content Include="Content\img\slider\18.jpg" />
     <Content Include="Content\img\slider\19.jpg" />
@@ -681,16 +698,43 @@
     <Content Include="Content\img\team\5.png" />
     <Content Include="Content\img\team\6.png" />
     <Content Include="Content\js\ajax-mail.js" />
+    <Content Include="Content\js\app.min.js" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\datatables\dataTables.bootstrap.min.css" />
+    <Content Include="Content\js\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="Content\js\datatables\jquery.dataTables.min.js" />
     <Content Include="Content\js\imagesloaded.pkgd.min.js" />
     <Content Include="Content\js\isotope.pkgd.min.js" />
     <Content Include="Content\js\jquery.counterup.min.js" />
     <Content Include="Content\js\jquery.magnific-popup.min.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\pages\chartist.js" />
+    <Content Include="Content\js\pages\chartjs.js" />
+    <Content Include="Content\js\pages\chat.js" />
+    <Content Include="Content\js\pages\dashboard-crm.js" />
+    <Content Include="Content\js\pages\dashboard-default.js" />
+    <Content Include="Content\js\pages\dashboard-e-commerce.js" />
+    <Content Include="Content\js\pages\dashboard-project.js" />
+    <Content Include="Content\js\pages\datatables.js" />
+    <Content Include="Content\js\pages\e-commerce-order-list.js" />
+    <Content Include="Content\js\pages\e-commerce-product-edit.js" />
+    <Content Include="Content\js\pages\file-manager.js" />
+    <Content Include="Content\js\pages\form-elements.js" />
+    <Content Include="Content\js\pages\form-validation.js" />
+    <Content Include="Content\js\pages\icon.js" />
+    <Content Include="Content\js\pages\mail.js" />
+    <Content Include="Content\js\pages\pricing.js" />
+    <Content Include="Content\js\pages\profile.js" />
+    <Content Include="Content\js\pages\project-list.js" />
+    <Content Include="Content\js\pages\slider.js" />
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\js\popper.js" />
+    <Content Include="Content\js\vendors.min.js" />
+    <Content Include="Content\js\vendor\dataTables.bootstrap.min.css" />
+    <Content Include="Content\js\vendor\dataTables.bootstrap.min.js" />
     <Content Include="Content\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Content\js\vendor\jquery.dataTables.min.js" />
     <Content Include="Content\js\vendor\modernizr-3.11.7.min.js" />
     <Content Include="Content\js\waypoints.min.js" />
     <Content Include="Content\others\adobe-thumb.png" />
@@ -744,6 +788,17 @@
     <Content Include="Content\others\thumb-9.jpg" />
     <Content Include="Content\others\visa.png" />
     <Content Include="Content\others\weather-app-thumb.jpg" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\table\app.min.js" />
+    <Content Include="Content\table\bootstrap.bundle.js" />
+    <Content Include="Content\table\bootstrap.bundle.min.js" />
+    <Content Include="Content\table\bootstrap.js" />
+    <Content Include="Content\table\bootstrap.min.js" />
+    <Content Include="Content\table\dataTables.bootstrap.min.css" />
+    <Content Include="Content\table\dataTables.bootstrap.min.js" />
+    <Content Include="Content\table\e-commerce-order-list.js" />
+    <Content Include="Content\table\jquery.dataTables.min.js" />
+    <Content Include="Content\table\vendors.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -778,6 +833,11 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\js\bootstrap.js.map" />
+    <Content Include="Content\table\bootstrap.bundle.js.map" />
+    <Content Include="Content\table\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\table\bootstrap.js.map" />
+    <Content Include="Content\table\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -801,6 +861,19 @@
     <Content Include="Views\Admin\AccountManager.cshtml" />
     <Content Include="Views\Shared\_ALayout.cshtml" />
     <Content Include="Views\Admin\AccountEdit.cshtml" />
+    <Content Include="Views\Admin\ListProduct.cshtml" />
+    <Content Include="Views\Admin\ProductEdit.cshtml" />
+    <Content Include="Views\Admin\NewProduct.cshtml" />
+    <Content Include="Views\Admin\ListCategory.cshtml" />
+    <Content Include="Views\Admin\CreateCategory.cshtml" />
+    <Content Include="Views\Admin\NewCategory.cshtml" />
+    <Content Include="Views\Admin\CategoryEdit.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Shop.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\Result.cshtml" />
+    <Content Include="Views\Admin\ListOrder.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
@@ -810,6 +883,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

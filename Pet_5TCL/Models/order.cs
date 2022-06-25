@@ -8,6 +8,12 @@ namespace Pet_5TCL.Models
 
     public partial class order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public order()
+        {
+            orders_item = new HashSet<orders_item>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
@@ -35,6 +41,7 @@ namespace Pet_5TCL.Models
 
         public virtual account account { get; set; }
 
-        public virtual orders_item orders_item { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<orders_item> orders_item { get; set; }
     }
 }

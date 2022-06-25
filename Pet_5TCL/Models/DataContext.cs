@@ -13,18 +13,14 @@ namespace Pet_5TCL.Models
         }
 
         public virtual DbSet<account> accounts { get; set; }
-        public virtual DbSet<address> addresses { get; set; }
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<orders_item> orders_item { get; set; }
         public virtual DbSet<product> products { get; set; }
         public virtual DbSet<products_type> products_type { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<account>()
-                .HasOptional(e => e.address)
-                .WithRequired(e => e.account);
-
             modelBuilder.Entity<account>()
                 .HasMany(e => e.orders)
                 .WithRequired(e => e.account)
@@ -34,13 +30,14 @@ namespace Pet_5TCL.Models
                 .Property(e => e.tongtien)
                 .HasPrecision(18, 0);
 
+            modelBuilder.Entity<order>()
+                .HasMany(e => e.orders_item)
+                .WithRequired(e => e.order)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<orders_item>()
                 .Property(e => e.dongia)
                 .HasPrecision(18, 0);
-
-            modelBuilder.Entity<orders_item>()
-                .HasOptional(e => e.order)
-                .WithRequired(e => e.orders_item);
 
             modelBuilder.Entity<product>()
                 .Property(e => e.dongia)
